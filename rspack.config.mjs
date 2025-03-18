@@ -1,6 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import { rspack } from '@rspack/core';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isRunningWebpack = !!process.env.WEBPACK;
@@ -29,6 +30,11 @@ const config = {
   experiments: {
     css: true,
   },
+  plugins: [
+    new rspack.experiments.SubresourceIntegrityPlugin({
+      enabled: true
+    })
+  ]
 };
 
 export default config;
